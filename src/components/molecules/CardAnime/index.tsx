@@ -11,10 +11,26 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  max-width: 110px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const TitleContainer = styled.div`
   padding: 0.5rem;
+  line-height: 1.5rem;
+  width: 100px;
+  height: 3.5rem;
+  overflow: hidden;
+
+  @supports (-webkit-line-clamp: 2) {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    white-space: initial;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 `;
 
 const ImgStyled = styled(Img)`

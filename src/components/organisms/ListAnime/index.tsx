@@ -11,6 +11,7 @@ const Container = styled.div`
   padding: 0 1rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
 `;
 
 const ListAnime: React.FC<ListAnimeProps> = ({ data, ...props }) => {
