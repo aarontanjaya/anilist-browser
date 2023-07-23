@@ -3,7 +3,8 @@ import { css } from '@emotion/react';
 export const globals = css`
   :root {
     background-color: black;
-
+    color: white;
+    font-size: 10px;
     --max-width: 1100px;
     --border-radius: 12px;
     --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
