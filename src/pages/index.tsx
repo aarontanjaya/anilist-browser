@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { useQuery } from '@apollo/client';
 import { GET_ANIME_LIST } from '@/services/animes';
+import { ListAnime } from '@/components/organisms';
 export default function Home() {
   const { loading, error, data } = useQuery(GET_ANIME_LIST, {
     variables: {
@@ -24,7 +25,9 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <div></div>
+        <div>
+          <ListAnime data={data && data.Page?.media ? data.Page.media : []} />
+        </div>
       </main>
     </>
   );

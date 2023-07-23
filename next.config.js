@@ -4,6 +4,14 @@ const nextConfig = {
   env: {
     ANILIST_URL: process.env.ANILIST_URL,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's4.anilist.co',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
