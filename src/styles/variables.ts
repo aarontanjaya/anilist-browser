@@ -7,3 +7,7 @@ export const breakpoints = {
   tablet: '768px',
   desktop: '1200px',
 };
+
+export const borders = {
+  radius: '0.5rem',
+};
