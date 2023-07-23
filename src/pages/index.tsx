@@ -1,6 +1,20 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
-
+import { useQuery } from '@apollo/client';
+import { GET_ANIME_LIST } from '@/services/animes';
 export default function Home() {
+  const { loading, error, data } = useQuery(GET_ANIME_LIST, {
+    variables: {
+      page: 1,
+      perPage: 10,
+      search: null,
+    },
+  });
+
+  useEffect(() => {
+    console.log(loading, error, data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
   return (
     <>
       <Head>
