@@ -26,7 +26,10 @@ export default function Home() {
       </Head>
       <main>
         <div>
-          <ListAnime data={data && data.Page?.media ? data.Page.media : []} />
+          <ListAnime
+            data={data && data.Page?.media ? data.Page.media : []}
+            isLoading={loading}
+          />
         </div>
       </main>
     </>

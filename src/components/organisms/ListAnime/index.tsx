@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 export type ListAnimeProps = React.ComponentProps<'div'> & {
   data: (IAnimeListItem | null)[];
+  isLoading: boolean;
 };
 
 const Container = styled.div`
@@ -14,12 +15,14 @@ const Container = styled.div`
   gap: 1rem;
 `;
 
-const ListAnime: React.FC<ListAnimeProps> = ({ data, ...props }) => {
+const ListAnime: React.FC<ListAnimeProps> = ({ data, isLoading, ...props }) => {
   return (
     <Container {...props}>
-      {data
+      {data && !isLoading
         ? data.map((item, idx) => <CardAnime key={`card-${idx}`} data={item} />)
-        : null}
+        : Array.from(Array(10).keys()).map((val) => (
+            <CardAnime.Skeleton key={`cardskeleton-${val}`} />
+          ))}
     </Container>
   );
 };

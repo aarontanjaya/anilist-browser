@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
 import { IImgProps, Img } from '@/components/atoms';
+import { Skeleton } from '@chakra-ui/react';
 import { IAnimeListItem } from '@/types';
 import { borders } from '@/styles/variables';
 
 export type CardAnimeProps = Omit<IImgProps, 'src' | 'alt'> & {
   data: IAnimeListItem | null;
 };
+
+export type CardAnimeSkeletonProps = React.ComponentProps<'div'>;
 
 const Container = styled.div`
   display: flex;
@@ -15,6 +18,12 @@ const Container = styled.div`
   :hover {
     cursor: pointer;
   }
+`;
+
+const SkeletonContainer = styled.div`
+  width: 100px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TitleContainer = styled.div`
@@ -37,11 +46,9 @@ const ImgStyled = styled(Img)`
   border-radius: ${borders.radius} ${borders.radius} 0 0;
 `;
 
-const CardAnime: React.FC<CardAnimeProps> = ({
-  containerClassname,
-  data,
-  ...props
-}) => {
+const CardAnime: React.FC<CardAnimeProps> & {
+  Skeleton: React.FC<CardAnimeSkeletonProps>;
+} = ({ containerClassname, data, ...props }) => {
   return (
     <Container className={containerClassname}>
       <ImgStyled
@@ -57,5 +64,29 @@ const CardAnime: React.FC<CardAnimeProps> = ({
     </Container>
   );
 };
+
+const CardAnimeSkeleton: React.FC<CardAnimeSkeletonProps> = ({ ...props }) => {
+  return (
+    <SkeletonContainer {...props}>
+      <Skeleton
+        css={{
+          marginBottom: '0.5rem',
+          borderRadius: `${borders.radius} ${borders.radius} 0 0`,
+        }}
+        height='125px'
+        width='100x'
+      />
+      <Skeleton
+        css={{
+          marginBottom: '0.5rem',
+        }}
+        height='10px'
+      />
+      <Skeleton height='10px' />
+    </SkeletonContainer>
+  );
+};
+
+CardAnime.Skeleton = CardAnimeSkeleton;
 
 export default CardAnime;
