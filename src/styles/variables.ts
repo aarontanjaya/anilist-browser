@@ -1,5 +1,7 @@
 export const colors = {
   redPrimary: '#bc1433',
+  teal: '#319795',
+  cyan: '#0BC5EA',
 };
 
 export const breakpoints = {

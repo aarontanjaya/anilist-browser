@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/client';
 import { GET_ANIME_LIST } from '@/services/animes';
 import { ListAnime } from '@/components/organisms';
+
 export default function Home() {
   const { loading, error, data } = useQuery(GET_ANIME_LIST, {
     variables: {
