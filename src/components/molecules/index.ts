@@ -1,3 +1,3 @@
 import CardAnime from './CardAnime';
-
-export { CardAnime };
+import Pagination from './Pagination';
+export { CardAnime, Pagination };

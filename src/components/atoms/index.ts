@@ -1,5 +1,7 @@
+import ButtonPagination from './ButtonPagination';
+import { ButtonPaginationProps } from './ButtonPagination';
 import Img from './Img';
 import { IImgProps } from './Img';
 
-export { Img };
-export type { IImgProps };
+export { ButtonPagination, Img };
+export type { ButtonPaginationProps, IImgProps };

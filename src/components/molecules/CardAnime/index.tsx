@@ -3,6 +3,7 @@ import { IImgProps, Img } from '@/components/atoms';
 import { Skeleton } from '@chakra-ui/react';
 import { IAnimeListItem } from '@/types';
 import { borders } from '@/styles/variables';
+import { css } from '@emotion/react';
 
 export type CardAnimeProps = Omit<IImgProps, 'src' | 'alt'> & {
   data: IAnimeListItem | null;
@@ -46,6 +47,11 @@ const ImgStyled = styled(Img)`
   border-radius: ${borders.radius} ${borders.radius} 0 0;
 `;
 
+const skeletonStyle = css`
+  margin-bottom: 0.5rem;
+  border-radius: ${borders.radius} ${borders.radius} 0 0;
+`;
+
 const CardAnime: React.FC<CardAnimeProps> & {
   Skeleton: React.FC<CardAnimeSkeletonProps>;
 } = ({ containerClassname, data, ...props }) => {
@@ -68,14 +74,7 @@ const CardAnime: React.FC<CardAnimeProps> & {
 const CardAnimeSkeleton: React.FC<CardAnimeSkeletonProps> = ({ ...props }) => {
   return (
     <SkeletonContainer {...props}>
-      <Skeleton
-        css={{
-          marginBottom: '0.5rem',
-          borderRadius: `${borders.radius} ${borders.radius} 0 0`,
-        }}
-        height='125px'
-        width='100x'
-      />
+      <Skeleton css={skeletonStyle} height='125px' width='100x' />
       <Skeleton
         css={{
           marginBottom: '0.5rem',

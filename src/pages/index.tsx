@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/client';
 import { GET_ANIME_LIST } from '@/services/animes';
 import { ListAnime } from '@/components/organisms';
-
+import { Pagination } from '@/components/molecules';
 export default function Home() {
   const { loading, error, data } = useQuery(GET_ANIME_LIST, {
     variables: {
@@ -31,6 +31,7 @@ export default function Home() {
             data={data && data.Page?.media ? data.Page.media : []}
             isLoading={loading}
           />
+          <Pagination page={1} onPageChange={() => null} />
         </div>
       </main>
     </>
