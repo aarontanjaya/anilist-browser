@@ -24,3 +24,27 @@ export const GET_ANIME_LIST = gql(`
     }
   }
 `);
+
+export const GET_ANIME_DETAIL = gql(`
+  query getAnime($id: Int){
+      Media(id: $id, type: ANIME){
+        id
+        title{
+          romaji
+          english
+        }
+        type
+        genres
+        bannerImage
+        coverImage{
+          medium
+          large
+        }
+        season
+        status
+        description
+        episodes
+        countryOfOrigin
+      }
+  }
+`);

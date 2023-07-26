@@ -4,6 +4,7 @@ import { Skeleton } from '@chakra-ui/react';
 import { IAnimeListItem } from '@/types';
 import { borders } from '@/styles/variables';
 import { css } from '@emotion/react';
+import Link from 'next/link';
 
 export type CardAnimeProps = Omit<IImgProps, 'src' | 'alt'> & {
   data: IAnimeListItem | null;
@@ -56,18 +57,22 @@ const CardAnime: React.FC<CardAnimeProps> & {
   Skeleton: React.FC<CardAnimeSkeletonProps>;
 } = ({ containerClassname, data, ...props }) => {
   return (
-    <Container className={containerClassname}>
-      <ImgStyled
-        src={data && data.coverImage ? (data.coverImage.medium as string) : ''}
-        alt={data && data.title ? (data.title.english as string) : ''}
-        width={100}
-        height={150}
-        {...props}
-      />
-      <TitleContainer>
-        <p>{data ? data.title?.english : ''}</p>
-      </TitleContainer>
-    </Container>
+    <Link href={`/anime/${data?.id}`}>
+      <Container className={containerClassname}>
+        <ImgStyled
+          src={
+            data && data.coverImage ? (data.coverImage.medium as string) : ''
+          }
+          alt={data && data.title ? (data.title.english as string) : ''}
+          width={100}
+          height={150}
+          {...props}
+        />
+        <TitleContainer>
+          <p>{data ? data.title?.english : ''}</p>
+        </TitleContainer>
+      </Container>
+    </Link>
   );
 };
 

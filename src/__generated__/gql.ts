@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query getAnimeList($search: String, $page: Int, $perPage: Int) {\n    Page(page: $page, perPage: $perPage) {\n      pageInfo {\n        total\n        perPage\n        currentPage\n        lastPage\n        hasNextPage\n      }\n      media(search: $search, type: ANIME, sort: FAVOURITES_DESC) {\n        id\n        title {\n          romaji\n          english\n        }\n        type\n        genres\n        coverImage {\n          medium\n        }\n      }\n    }\n  }\n": types.GetAnimeListDocument,
+    "\n  query getAnime($id: Int){\n      Media(id: $id, type: ANIME){\n        id\n        title{\n          romaji\n          english\n        }\n        type\n        genres\n        bannerImage\n        coverImage{\n          medium\n          large\n        }\n        season\n        status\n        description\n        episodes\n        countryOfOrigin\n      }\n  }\n": types.GetAnimeDocument,
 };
 
 /**
@@ -34,6 +35,10 @@ export function gql(source: string): unknown;
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query getAnimeList($search: String, $page: Int, $perPage: Int) {\n    Page(page: $page, perPage: $perPage) {\n      pageInfo {\n        total\n        perPage\n        currentPage\n        lastPage\n        hasNextPage\n      }\n      media(search: $search, type: ANIME, sort: FAVOURITES_DESC) {\n        id\n        title {\n          romaji\n          english\n        }\n        type\n        genres\n        coverImage {\n          medium\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query getAnimeList($search: String, $page: Int, $perPage: Int) {\n    Page(page: $page, perPage: $perPage) {\n      pageInfo {\n        total\n        perPage\n        currentPage\n        lastPage\n        hasNextPage\n      }\n      media(search: $search, type: ANIME, sort: FAVOURITES_DESC) {\n        id\n        title {\n          romaji\n          english\n        }\n        type\n        genres\n        coverImage {\n          medium\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query getAnime($id: Int){\n      Media(id: $id, type: ANIME){\n        id\n        title{\n          romaji\n          english\n        }\n        type\n        genres\n        bannerImage\n        coverImage{\n          medium\n          large\n        }\n        season\n        status\n        description\n        episodes\n        countryOfOrigin\n      }\n  }\n"): (typeof documents)["\n  query getAnime($id: Int){\n      Media(id: $id, type: ANIME){\n        id\n        title{\n          romaji\n          english\n        }\n        type\n        genres\n        bannerImage\n        coverImage{\n          medium\n          large\n        }\n        season\n        status\n        description\n        episodes\n        countryOfOrigin\n      }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
