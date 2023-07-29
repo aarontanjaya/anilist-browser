@@ -14,6 +14,7 @@ const Container = styled.div(
     display: 'grid',
     gridTemplateColumns: 'auto 300px',
     backgroundColor: colors.bgContent,
+    alignItems: 'flex-start',
     paddingBottom: '1.5rem',
   },
   (props) => props.css,

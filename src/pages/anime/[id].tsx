@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { GET_ANIME_DETAIL } from '@/services/animes';
 import { Banner } from '@/components/molecules';
-import { SectionHeader } from '@/components/organisms';
+import { SectionHeader, SectionSummary } from '@/components/organisms';
 
 export default function AnimeDetail() {
   const router = useRouter();
@@ -18,6 +18,7 @@ export default function AnimeDetail() {
         url={data?.Media?.bannerImage ? `url(${data.Media.bannerImage})` : ''}
       />
       <SectionHeader data={data && data.Media ? data.Media : null} />
+      <SectionSummary data={data && data.Media ? data.Media : null} />
       <p>{JSON.stringify(data)}</p>
     </div>
   );

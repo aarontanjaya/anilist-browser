@@ -4,7 +4,7 @@ export const globals = css`
   :root {
     background-color: black;
     color: white;
-    font-size: 10px;
+    font-size: 14px;
     --max-width: 1100px;
     --border-radius: 12px;
     --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -101,12 +101,23 @@ export const globals = css`
     -webkit-font-smoothing: antialiased;
     text-size-adjust: none;
   }
+  h5 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
 
   h3 {
     font-size: 1.5rem;
+    font-weight: 700;
   }
   h2 {
     font-size: 1.75rem;
+    font-weight: 700;
   }
   footer,
   header,
