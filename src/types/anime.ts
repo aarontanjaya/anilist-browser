@@ -22,11 +22,11 @@ export interface IAnime {
   type?: string | null;
   genres?: (string | null)[] | null;
   coverImage?: ICoverImage | null;
-  season?: Seasons;
-  status?: MediaStatus;
-  description?: string;
-  episodes?: number;
-  countryOfOrigin?: string;
+  season?: Seasons | null;
+  status?: MediaStatus | null;
+  description?: string | null;
+  episodes?: number | null;
+  countryOfOrigin?: string | null;
 }
 
 export type Seasons = 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL';
