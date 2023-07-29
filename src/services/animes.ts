@@ -40,11 +40,44 @@ export const GET_ANIME_DETAIL = gql(`
           medium
           large
         }
+        characters(sort: ID) {
+          edges {
+            voiceActors(language: JAPANESE) {
+              image {
+                medium
+              }
+              language
+              name {
+                first
+                last
+                full
+                native
+              }
+              id
+            }
+            role
+            node {
+              image {
+                medium
+              }
+              name {
+                first
+                last
+                full
+                native
+              }
+              id
+            }
+            id
+          }
+        }
         season
         status
         description
         episodes
         countryOfOrigin
+        popularity
+        averageScore
       }
   }
 `);
