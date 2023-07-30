@@ -6,6 +6,8 @@ import CardAnime from './CardAnime';
 import { CardAnimeProps } from './CardAnime';
 import CardCharacter from './CardCharacter';
 import { CardCharacterProps } from './CardCharacter';
+import CardCollection from './CardCollection';
+import { CardCollectionProps } from './CardCollection';
 import ImageHeader from './ImageHeader';
 import { ImageHeaderProps } from './ImageHeader';
 import Pagination from './Pagination';
@@ -18,6 +20,7 @@ export {
   ButtonAddCollection,
   CardAnime,
   CardCharacter,
+  CardCollection,
   ImageHeader,
   Pagination,
   SummaryItem,
@@ -27,6 +30,7 @@ export type {
   ButtonAddCollectionProps,
   CardAnimeProps,
   CardCharacterProps,
+  CardCollectionProps,
   ImageHeaderProps,
   PaginationProps,
   SummaryItemProps,

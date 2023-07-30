@@ -18,7 +18,7 @@ const NavStyled = styled.nav({
   width: '100%',
   height: '50px',
   bottom: 0,
-  backgroundColor: colors.bgContent,
+  backgroundColor: colors.bgMask,
   zIndex: 100000,
   [mqTablet]: {
     position: 'fixed',
@@ -30,6 +30,7 @@ const NavStyled = styled.nav({
     display: 'flex',
     flexDirection: 'row',
     padding: '0 3rem',
+    backgroundColor: colors.bgContent,
     justifyContent: 'space-between',
   },
 });

@@ -9,13 +9,17 @@ import { ApolloProvider } from '@apollo/client';
 import { CollectionProvider } from '@/components/providers/CollectionProvider';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
-const inter = Source_Sans_3({ subsets: ['latin'] });
+const sourceSans = Source_Sans_3({ subsets: ['latin'], display: 'swap' });
 const theme = extendTheme({
+  fonts: {
+    sourceSans: sourceSans.style.fontFamily,
+  },
   styles: {
     global: () => ({
       body: {
         bg: '',
         color: '',
+        fontFamily: sourceSans.style.fontFamily,
       },
     }),
   },
@@ -32,7 +36,7 @@ type AppPropsWithLayout = AppProps & {
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   return getLayout(
-    <main className={inter.className}>
+    <main className={sourceSans.className}>
       <CollectionProvider>
         <ApolloProvider client={apolloClient}>
           <ChakraProvider theme={theme}>

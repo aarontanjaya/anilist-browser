@@ -14,7 +14,7 @@ export function collectionReducer(
       if (state[payload.name]) {
         newList = [...state[payload.name], payload.item];
       } else {
-        newList = payload.item ? [payload.item] : [];
+        newList = payload.item && payload.item.id ? [payload.item] : [];
       }
 
       const newCollection = {
