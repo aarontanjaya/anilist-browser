@@ -3,7 +3,7 @@ import React from 'react';
 
 export type SummaryItemProps = React.ComponentProps<'div'> & {
   title: string;
-  content: string;
+  textContent: React.ReactNode;
 };
 
 const Container = styled.div({
@@ -13,13 +13,13 @@ const Container = styled.div({
 
 const SummaryItem: React.FC<SummaryItemProps> = ({
   title,
-  content,
+  textContent,
   ...props
 }) => {
   return (
     <Container {...props}>
       <h4>{title}</h4>
-      <p>{content}</p>
+      <p>{textContent}</p>
     </Container>
   );
 };

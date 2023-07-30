@@ -45,12 +45,14 @@ const TitleContainer = styled.div`
 `;
 
 const ImgStyled = styled(Img)`
-  border-radius: ${borders.radius} ${borders.radius} 0 0;
+  border-radius: ${borders.radius};
+  width: 100px;
+  height: 150px;
 `;
 
 const skeletonStyle = css`
   margin-bottom: 0.5rem;
-  border-radius: ${borders.radius} ${borders.radius} 0 0;
+  border-radius: ${borders.radius};
 `;
 
 const CardAnime: React.FC<CardAnimeProps> & {

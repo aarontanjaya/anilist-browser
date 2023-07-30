@@ -5,11 +5,11 @@ import DetailHeader from '../DetailHeader';
 import DescriptionText from '../DescriptionText';
 import { colors } from '@/styles/variables';
 
-export type SectionHeaderProps = React.ComponentProps<'div'> & {
+export type SectionHeaderProps = React.ComponentProps<'section'> & {
   data: IAnime | null;
 };
 
-const Container = styled.div(
+const Container = styled.section(
   {
     display: 'grid',
     gridTemplateColumns: 'auto 300px',

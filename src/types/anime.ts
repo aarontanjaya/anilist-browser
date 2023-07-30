@@ -29,6 +29,11 @@ export interface IAnime {
   countryOfOrigin?: string | null;
   popularity?: number | null;
   averageScore?: number | null;
+  characters?: ICharacterEdge | null;
+}
+
+export interface ICharacterEdge {
+  edges?: (ICharacter | null)[] | null;
 }
 
 export interface ICharacter {
@@ -50,6 +55,7 @@ export interface ICharacterNode {
   name?: IName | null;
   id?: number | null;
 }
+
 export interface IName {
   first?: string | null;
   last?: string | null;

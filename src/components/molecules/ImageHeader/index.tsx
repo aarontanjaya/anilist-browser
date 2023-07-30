@@ -4,7 +4,7 @@ import { Img } from '@/components/atoms';
 import { css } from '@emotion/react';
 import { borders } from '@/styles/variables';
 
-type ImageHeaderProps = React.ComponentProps<'div'> & {
+export type ImageHeaderProps = React.ComponentProps<'div'> & {
   src: string;
   alt: string;
 };

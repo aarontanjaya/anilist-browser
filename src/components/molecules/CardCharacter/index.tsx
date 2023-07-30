@@ -12,6 +12,7 @@ const Container = styled.div(
   {
     display: 'flex',
     flexDirection: 'row',
+    padding: '1rem',
     backgroundColor: colors.bgContent,
     borderRadius: borders.radius,
   },
