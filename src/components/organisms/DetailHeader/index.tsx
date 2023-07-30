@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ImageHeader } from '@/components/molecules';
+import { ButtonAddCollection, ImageHeader } from '@/components/molecules';
 import React from 'react';
 import { IAnime } from '@/types';
 
@@ -21,7 +21,7 @@ const DetailHeader: React.FC<DetailHeaderProps> = ({ data, ...props }) => {
         src={data && data.coverImage?.large ? data.coverImage.large : ''}
         alt={data && data.title && data.title.english ? data.title.english : ''}
       />
-      <button>testtest</button>
+      <ButtonAddCollection data={data ? data : {}} />
     </Container>
   );
 };

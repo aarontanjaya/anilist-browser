@@ -20,19 +20,26 @@ const Container = styled.div({
   },
 });
 
+const Title = styled.h3({
+  paddingBottom: '1rem',
+});
+
 const Characters: React.FC<CharactersProps> = ({ data, ...props }) => {
   return (
-    <Container {...props}>
-      {data &&
-        data.map((item, idx) =>
-          item ? (
-            <CardCharacter
-              key={`cardchar-${idx}-${item.node?.name?.full}`}
-              data={item}
-            />
-          ) : null,
-        )}
-    </Container>
+    <div>
+      <Title>Characters</Title>
+      <Container {...props}>
+        {data &&
+          data.map((item, idx) =>
+            item ? (
+              <CardCharacter
+                key={`cardchar-${idx}-${item.node?.name?.full}`}
+                data={item}
+              />
+            ) : null,
+          )}
+      </Container>
+    </div>
   );
 };
 

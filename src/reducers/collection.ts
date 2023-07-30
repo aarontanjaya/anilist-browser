@@ -3,7 +3,10 @@ import { CollectionAction, CollectionActionTypes } from './actions';
 import { Collection } from './states';
 
 export const collectionInitialState: Collection = {};
-export function collectionReducer(state: Collection, action: CollectionAction) {
+export function collectionReducer(
+  state: Collection,
+  action: CollectionAction,
+): Collection {
   const { type, payload } = action;
   switch (type) {
     case CollectionActionTypes.ADD: {
@@ -49,4 +52,30 @@ export function collectionReducer(state: Collection, action: CollectionAction) {
 export const getAllCollections = (): CollectionAction => ({
   type: CollectionActionTypes.GET_ALL,
   payload: { name: '', item: {} },
+});
+
+export const addCollection = (
+  name: string,
+  item: IAnime,
+): CollectionAction => ({
+  type: CollectionActionTypes.ADD,
+  payload: { name: name, item: item },
+});
+
+export const deleteCollection = (name: string) => ({
+  type: CollectionActionTypes.DELETE,
+  payload: {
+    name: name,
+    item: {},
+  },
+});
+
+export const deleteCollectionItem = (name: string, id: string) => ({
+  tyoe: CollectionActionTypes.DELETE_ITEM,
+  payload: {
+    name: name,
+    item: {
+      id: id,
+    },
+  },
 });

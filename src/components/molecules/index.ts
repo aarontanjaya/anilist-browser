@@ -1,5 +1,7 @@
 import Banner from './Banner';
 import { BannerProps } from './Banner';
+import ButtonAddCollection from './ButtonAddCollection';
+import { ButtonAddCollectionProps } from './ButtonAddCollection';
 import CardAnime from './CardAnime';
 import { CardAnimeProps } from './CardAnime';
 import CardCharacter from './CardCharacter';
@@ -12,15 +14,17 @@ import SummaryItem from './SummaryItem';
 import { SummaryItemProps } from './SummaryItem';
 
 export {
+  Banner,
+  ButtonAddCollection,
   CardAnime,
   CardCharacter,
-  Banner,
   ImageHeader,
   Pagination,
   SummaryItem,
 };
 export type {
   BannerProps,
+  ButtonAddCollectionProps,
   CardAnimeProps,
   CardCharacterProps,
   ImageHeaderProps,
