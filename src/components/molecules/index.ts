@@ -10,8 +10,6 @@ import CardCollection from './CardCollection';
 import { CardCollectionProps } from './CardCollection';
 import ImageHeader from './ImageHeader';
 import { ImageHeaderProps } from './ImageHeader';
-import Pagination from './Pagination';
-import { PaginationProps } from './Pagination';
 import SummaryItem from './SummaryItem';
 import { SummaryItemProps } from './SummaryItem';
 
@@ -22,7 +20,6 @@ export {
   CardCharacter,
   CardCollection,
   ImageHeader,
-  Pagination,
   SummaryItem,
 };
 export type {
@@ -32,6 +29,5 @@ export type {
   CardCharacterProps,
   CardCollectionProps,
   ImageHeaderProps,
-  PaginationProps,
   SummaryItemProps,
 };
