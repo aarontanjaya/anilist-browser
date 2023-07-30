@@ -9,6 +9,7 @@ import { CollectionContext } from '@/components/providers/CollectionProvider';
 import { IError } from '@/types/error';
 import { css } from '@emotion/react';
 import { addCollection } from '@/reducers/collection';
+import Link from 'next/link';
 
 export type ButtonAddCollectionProps = React.ComponentProps<'div'> & {
   data: IAnime;
@@ -23,7 +24,7 @@ const ListContainer = styled.div({
   backgroundColor: 'white',
   color: 'black',
   position: 'absolute',
-
+  zIndex: 100,
   top: 'calc(100% + 8px)',
   borderRadius: borders.radius,
 });
@@ -111,23 +112,32 @@ const ButtonAddCollection: React.FC<ButtonAddCollectionProps> = ({
           <List>
             {Object.keys(collection).length
               ? Object.keys(collection).map((value, idx) => (
-                  <ListItem key={`col-${value}-${idx}`}>
-                    <p>{value}</p>
-                    <ButtonTransparent>
-                      {collection[value].find((val) => val.id == data.id) ? (
-                        <CheckCircleIcon
-                          fontWeight={'bold'}
-                          color={colors.teal}
-                        />
-                      ) : (
-                        <AddIcon
-                          fontWeight={'bold'}
-                          color={colors.teal}
-                          onClick={() => dispatch(addCollection(value, data))}
-                        />
-                      )}
-                    </ButtonTransparent>
-                  </ListItem>
+                  <Link
+                    key={`col-${value}-${idx}`}
+                    href={`/collections/${value}`}
+                  >
+                    <ListItem>
+                      <p>{value}</p>
+
+                      <ButtonTransparent>
+                        {collection[value].find((val) => val.id == data.id) ? (
+                          <CheckCircleIcon
+                            fontWeight={'bold'}
+                            color={colors.teal}
+                          />
+                        ) : (
+                          <AddIcon
+                            fontWeight={'bold'}
+                            color={colors.teal}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              dispatch(addCollection(value, data));
+                            }}
+                          />
+                        )}
+                      </ButtonTransparent>
+                    </ListItem>
+                  </Link>
                 ))
               : null}
           </List>
