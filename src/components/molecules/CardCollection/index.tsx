@@ -42,7 +42,7 @@ const ContainerPlaceholder = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-
+  min-height: 300px;
   :hover {
     background-color: ${colors.bgMask};
   }
