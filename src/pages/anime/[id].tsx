@@ -17,7 +17,6 @@ export default function AnimeDetail() {
       <Banner
         url={data?.Media?.bannerImage ? `url(${data.Media.bannerImage})` : ''}
       />
-
       <SectionHeader data={data && data.Media ? data.Media : null} />
       <SectionContent data={data && data.Media ? data.Media : null} />
     </div>
