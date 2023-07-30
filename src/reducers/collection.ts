@@ -44,7 +44,7 @@ export function collectionReducer(
       newCollection[payload.name] = newList.filter(
         (item) => item.id !== payload.item.id,
       );
-      console.log('jalan');
+
       return newCollection;
     }
   }
