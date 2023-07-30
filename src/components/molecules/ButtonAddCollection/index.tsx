@@ -84,18 +84,26 @@ const ButtonAddCollection: React.FC<ButtonAddCollectionProps> = ({
     setNewCollectionName(target);
   };
 
+  const onClickDropdown = () => {
+    setShowDropdown(!showDropdown);
+    setNewCollectionName('');
+    setErr({
+      msg: null,
+      err: false,
+    });
+  };
   const handleSubmit = () => {
     const validateError = validateCollectionName(collection, newCollectionName);
     setErr(validateError);
     if (validateError.err) {
       return;
     }
-    console.log('ts', collection);
+    setNewCollectionName('');
     dispatch(addCollection(newCollectionName, data));
   };
   return (
     <Container {...props}>
-      <ButtonPrimary onClick={() => setShowDropdown(!showDropdown)}>
+      <ButtonPrimary onClick={() => onClickDropdown()}>
         Add to Collection
       </ButtonPrimary>
       {showDropdown && (
@@ -125,7 +133,10 @@ const ButtonAddCollection: React.FC<ButtonAddCollectionProps> = ({
                 border-style: none;
               `}
             >
-              <Input onChange={(e) => handleInputChange(e.target.value)} />
+              <Input
+                onChange={(e) => handleInputChange(e.target.value)}
+                value={newCollectionName}
+              />
               <ButtonTransparent onClick={() => handleSubmit()}>
                 <AddIcon fontWeight={'bold'} color={colors.teal} />
               </ButtonTransparent>

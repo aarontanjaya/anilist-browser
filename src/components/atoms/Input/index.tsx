@@ -9,6 +9,7 @@ const InputStyled = styled.input({
   borderStyle: 'solid',
   borderWidth: '1px',
   borderColor: 'grey',
+  padding: '0 0.5rem',
 });
 const Input: React.FC<InputProps> = ({ ...props }) => {
   return <InputStyled {...props} />;

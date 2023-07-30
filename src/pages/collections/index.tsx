@@ -1,6 +1,5 @@
 import { UserLayout } from '@/components/layout';
 import ListCollection from '@/components/organisms/ListCollection';
-import { mqTablet } from '@/styles/mq';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import React, { ReactElement } from 'react';
@@ -8,10 +7,6 @@ import React, { ReactElement } from 'react';
 export default function Collections() {
   const Title = styled.h3({
     padding: '1rem',
-    paddingBottom: '0',
-    [mqTablet]: {
-      padding: '2rem',
-    },
   });
 
   return (

@@ -17,6 +17,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 
 export type ListCollectionProps = React.ComponentProps<'div'>;
@@ -45,12 +46,12 @@ const TextField = styled.p`
 `;
 
 const ErrMsg = styled.p({
-  color: 'red',
+  color: '#ff7875',
   wordWrap: 'break-word',
   display: 'flex',
   fontSize: '0.8rem',
-  padding: '1rem',
-  paddingTop: '0',
+  paddingTop: '1rem',
+  paddingLeft: 0,
 });
 
 const ListCollection: React.FC<ListCollectionProps> = ({ ...props }) => {
@@ -66,6 +67,15 @@ const ListCollection: React.FC<ListCollectionProps> = ({ ...props }) => {
     setNewCollectionName(target);
   };
 
+  const handleClose = () => {
+    setNewCollectionName('');
+    setErr({
+      msg: null,
+      err: false,
+    });
+    onClose();
+  };
+
   const handleSubmit = () => {
     const validateError = validateCollectionName(collection, newCollectionName);
     setErr(validateError);
@@ -77,18 +87,21 @@ const ListCollection: React.FC<ListCollectionProps> = ({ ...props }) => {
   };
 
   return (
-    <Container {...props}>
-      <Modal isOpen={isOpen} onClose={onClose}>
+    <>
+      <Modal isOpen={isOpen} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent
           backgroundColor={colors.bgMaskSolid}
           fontFamily='sourceSans'
         >
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Add New Collection</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <TextField>Collection Name</TextField>
-            <InputStyled onChange={(e) => handleInputChange(e.target.value)} />
+            <InputStyled
+              onChange={(e) => handleInputChange(e.target.value)}
+              value={newCollectionName}
+            />
             {err.err ? <ErrMsg>{err.msg}</ErrMsg> : null}
           </ModalBody>
 
@@ -97,15 +110,19 @@ const ListCollection: React.FC<ListCollectionProps> = ({ ...props }) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <CardCollection.Placeholder onClick={onOpen} />
-      {Object.keys(collection).map((name) => (
-        <CardCollection
-          key={`collection-${name}`}
-          name={name}
-          data={collection[name]}
-        />
-      ))}
-    </Container>
+      <Container {...props}>
+        <CardCollection.Placeholder onClick={onOpen} />
+        {Object.keys(collection).map((name) => (
+          <Link key={`cardkey-${name}`} href={`/collections/${name}`}>
+            <CardCollection
+              key={`collection-${name}`}
+              name={name}
+              data={collection[name]}
+            />
+          </Link>
+        ))}
+      </Container>
+    </>
   );
 };
 
