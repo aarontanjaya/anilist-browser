@@ -33,7 +33,7 @@ const ListAnime: React.FC<ListAnimeProps> = ({
 }) => {
   return (
     <Container {...props}>
-      {data && !isLoading
+      {data
         ? data.map((item, idx) => (
             <CardAnime
               showDelete={enableDelete}
@@ -42,9 +42,12 @@ const ListAnime: React.FC<ListAnimeProps> = ({
               data={item}
             />
           ))
-        : Array.from(Array(10).keys()).map((val) => (
+        : null}
+      {isLoading
+        ? Array.from(Array(10).keys()).map((val) => (
             <CardAnime.Skeleton key={`cardskeleton-${val}`} />
-          ))}
+          ))
+        : null}
     </Container>
   );
 };
