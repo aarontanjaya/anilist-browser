@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 import { GET_ANIME_LIST } from '@/services/animes';
 import { ListAnime } from '@/components/organisms';
 import { Pagination } from '@/components/molecules';
+import { ReactElement } from 'react';
+import { UserLayout } from '@/components/layout';
 export default function Home() {
   const { loading, data } = useQuery(GET_ANIME_LIST, {
     variables: {
@@ -32,3 +34,7 @@ export default function Home() {
     </>
   );
 }
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <UserLayout>{page}</UserLayout>;
+};

@@ -19,6 +19,7 @@ export const GET_ANIME_LIST = gql(`
         genres
         coverImage {
           medium
+          large
         }
       }
     }

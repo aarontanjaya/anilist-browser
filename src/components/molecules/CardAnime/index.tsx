@@ -5,6 +5,7 @@ import { IAnimeListItem } from '@/types';
 import { borders } from '@/styles/variables';
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { mqTablet } from '@/styles/mq';
 
 export type CardAnimeProps = Omit<IImgProps, 'src' | 'alt'> & {
   data: IAnimeListItem | null;
@@ -16,7 +17,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-width: 110px;
+  max-width: 200px;
   :hover {
     cursor: pointer;
   }
@@ -31,7 +32,7 @@ const SkeletonContainer = styled.div`
 const TitleContainer = styled.div`
   padding: 0.5rem;
   line-height: 1.5rem;
-  width: 100px;
+  width: 100%;
   height: 3.5rem;
   overflow: hidden;
 
@@ -46,8 +47,16 @@ const TitleContainer = styled.div`
 
 const ImgStyled = styled(Img)`
   border-radius: ${borders.radius};
-  width: 100px;
+  object-fit: cover;
+`;
+
+const ImgContainer = css`
+  object-fit: cover;
+  width: 100%;
   height: 150px;
+  ${mqTablet} {
+    height: 300px;
+  }
 `;
 
 const skeletonStyle = css`
@@ -62,12 +71,10 @@ const CardAnime: React.FC<CardAnimeProps> & {
     <Link href={`/anime/${data?.id}`}>
       <Container className={containerClassname}>
         <ImgStyled
-          src={
-            data && data.coverImage ? (data.coverImage.medium as string) : ''
-          }
+          src={data && data.coverImage ? (data.coverImage.large as string) : ''}
+          css={ImgContainer}
           alt={data && data.title ? (data.title.english as string) : ''}
-          width={100}
-          height={150}
+          fill={true}
           {...props}
         />
         <TitleContainer>

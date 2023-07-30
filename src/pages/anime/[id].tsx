@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 import { GET_ANIME_DETAIL } from '@/services/animes';
 import { Banner } from '@/components/molecules';
 import { SectionContent, SectionHeader } from '@/components/organisms';
+import { ReactElement } from 'react';
+import { UserLayout } from '@/components/layout';
 
 export default function AnimeDetail() {
   const router = useRouter();
@@ -22,3 +24,7 @@ export default function AnimeDetail() {
     </div>
   );
 }
+
+AnimeDetail.getLayout = function getLayout(page: ReactElement) {
+  return <UserLayout>{page}</UserLayout>;
+};
