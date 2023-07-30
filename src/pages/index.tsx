@@ -2,9 +2,19 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/client';
 import { GET_ANIME_LIST } from '@/services/animes';
 import { ListAnime } from '@/components/organisms';
-import { Pagination } from '@/components/molecules';
 import { ReactElement } from 'react';
 import { UserLayout } from '@/components/layout';
+import styled from '@emotion/styled';
+
+const Container = styled.div`
+  max-width: 1300px;
+  padding: 2rem 0;
+`;
+
+const MainContainer = styled.div`
+  justify-content: center;
+  display: flex;
+`;
 export default function Home() {
   const { loading, data } = useQuery(GET_ANIME_LIST, {
     variables: {
@@ -21,15 +31,14 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <div>
+      <MainContainer>
+        <Container>
           <ListAnime
             data={data && data.Page?.media ? data.Page.media : []}
             isLoading={loading}
           />
-          <Pagination page={1} onPageChange={() => null} />
-        </div>
-      </main>
+        </Container>
+      </MainContainer>
     </>
   );
 }

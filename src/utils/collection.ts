@@ -5,7 +5,7 @@ export const validateCollectionName: (
   collection: Collection,
   name: string,
 ) => IError = (collection, name: string) => {
-  const specialChars = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   if (!name) {
     return { msg: 'Error collection name cant be empty', err: true };
   }

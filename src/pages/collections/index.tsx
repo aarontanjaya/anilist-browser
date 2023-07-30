@@ -4,11 +4,21 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import React, { ReactElement } from 'react';
 
-export default function Collections() {
-  const Title = styled.h3({
-    padding: '1rem',
-  });
+const Title = styled.h3({
+  padding: '1rem',
+});
 
+const Container = styled.div`
+  max-width: 1300px;
+  padding: 2rem 0;
+  width: 100%;
+`;
+
+const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export default function Collections() {
   return (
     <>
       <Head>
@@ -16,12 +26,12 @@ export default function Collections() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <div>
+      <MainContainer>
+        <Container>
           <Title>My Collections</Title>
           <ListCollection />
-        </div>
-      </main>
+        </Container>
+      </MainContainer>
     </>
   );
 }

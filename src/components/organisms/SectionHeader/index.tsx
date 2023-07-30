@@ -3,7 +3,6 @@ import { IAnime } from '@/types';
 import styled from '@emotion/styled';
 import DetailHeader from '../DetailHeader';
 import DescriptionText from '../DescriptionText';
-import { colors } from '@/styles/variables';
 
 export type SectionHeaderProps = React.ComponentProps<'section'> & {
   data: IAnime | null;
@@ -13,7 +12,6 @@ const Container = styled.section(
   {
     display: 'grid',
     gridTemplateColumns: 'auto 300px',
-    backgroundColor: colors.bgContent,
     alignItems: 'flex-start',
     paddingBottom: '1.5rem',
   },

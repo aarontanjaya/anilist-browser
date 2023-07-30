@@ -7,6 +7,8 @@ import { mqDesktop, mqMobile } from '@/styles/mq';
 export type ListAnimeProps = React.ComponentProps<'div'> & {
   data: (IAnimeListItem | null)[];
   isLoading: boolean;
+  enableDelete?: boolean;
+  onDelete?: (id: number | null | undefined) => void;
 };
 
 const Container = styled.div`
@@ -22,11 +24,24 @@ const Container = styled.div`
   }
 `;
 
-const ListAnime: React.FC<ListAnimeProps> = ({ data, isLoading, ...props }) => {
+const ListAnime: React.FC<ListAnimeProps> = ({
+  data,
+  enableDelete = false,
+  isLoading,
+  onDelete,
+  ...props
+}) => {
   return (
     <Container {...props}>
       {data && !isLoading
-        ? data.map((item, idx) => <CardAnime key={`card-${idx}`} data={item} />)
+        ? data.map((item, idx) => (
+            <CardAnime
+              showDelete={enableDelete}
+              onDelete={onDelete}
+              key={`card-${idx}`}
+              data={item}
+            />
+          ))
         : Array.from(Array(10).keys()).map((val) => (
             <CardAnime.Skeleton key={`cardskeleton-${val}`} />
           ))}

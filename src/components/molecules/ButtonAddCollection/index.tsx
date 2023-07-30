@@ -120,7 +120,11 @@ const ButtonAddCollection: React.FC<ButtonAddCollectionProps> = ({
                           color={colors.teal}
                         />
                       ) : (
-                        <AddIcon fontWeight={'bold'} color={colors.teal} />
+                        <AddIcon
+                          fontWeight={'bold'}
+                          color={colors.teal}
+                          onClick={() => dispatch(addCollection(value, data))}
+                        />
                       )}
                     </ButtonTransparent>
                   </ListItem>

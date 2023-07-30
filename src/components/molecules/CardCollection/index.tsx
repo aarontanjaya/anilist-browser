@@ -102,7 +102,7 @@ const CardCollection: React.FC<CardCollectionProps> & {
     onClose();
   };
   return (
-    <>
+    <Container {...props}>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
@@ -121,35 +121,34 @@ const CardCollection: React.FC<CardCollectionProps> & {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Container {...props}>
-        <ImgStyled
-          src={
-            data && data[0] && data[0].coverImage
-              ? (data[0].coverImage.large as string)
-              : 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx21-tXMN3Y20PIL9.jpg'
-          }
-          alt={
-            data && data[0] && data[0].title && data[0].title.english
-              ? data[0].title.english
-              : ''
-          }
-          fill={true}
-          css={ImgContainer}
+
+      <ImgStyled
+        src={
+          data && data[0] && data[0].coverImage
+            ? (data[0].coverImage.large as string)
+            : 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx21-tXMN3Y20PIL9.jpg'
+        }
+        alt={
+          data && data[0] && data[0].title && data[0].title.english
+            ? data[0].title.english
+            : ''
+        }
+        fill={true}
+        css={ImgContainer}
+      />
+      <TextContainer>
+        <div>
+          <TextName>{name}</TextName>
+          <p>{`${data.length} Anime`}</p>
+        </div>
+        <DelIcon
+          onClick={(e) => {
+            e.preventDefault();
+            onOpen();
+          }}
         />
-        <TextContainer>
-          <div>
-            <TextName>{name}</TextName>
-            <p>{`${data.length} Anime`}</p>
-          </div>
-          <DelIcon
-            onClick={(e) => {
-              e.preventDefault();
-              onOpen();
-            }}
-          />
-        </TextContainer>
-      </Container>
-    </>
+      </TextContainer>
+    </Container>
   );
 };
 

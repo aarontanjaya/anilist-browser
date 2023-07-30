@@ -42,8 +42,9 @@ export function collectionReducer(
       }
 
       newCollection[payload.name] = newList.filter(
-        (item) => item.id == payload.item.id,
+        (item) => item.id !== payload.item.id,
       );
+      console.log('jalan');
       return newCollection;
     }
   }
@@ -70,8 +71,8 @@ export const deleteCollection = (name: string) => ({
   },
 });
 
-export const deleteCollectionItem = (name: string, id: string) => ({
-  tyoe: CollectionActionTypes.DELETE_ITEM,
+export const deleteCollectionItem = (name: string, id: number) => ({
+  type: CollectionActionTypes.DELETE_ITEM,
   payload: {
     name: name,
     item: {
