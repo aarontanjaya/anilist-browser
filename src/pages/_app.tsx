@@ -1,6 +1,6 @@
 import { Global } from '@emotion/react';
 import { globals } from '@/styles';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
 import { Source_Sans_3 } from 'next/font/google';
 import type { AppProps } from 'next/app';
 import { NextPage } from 'next';
@@ -35,6 +35,15 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
+  useEffect(() => {
+    console.log('tes');
+    if ('serviceWorker' in navigator) {
+      console.log('masuk');
+      navigator.serviceWorker
+        .register('/serviceWorker.js')
+        .then((reg) => console.log('test', reg));
+    }
+  }, []);
   return getLayout(
     <main className={sourceSans.className}>
       <CollectionProvider>
